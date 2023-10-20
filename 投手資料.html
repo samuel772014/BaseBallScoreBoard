@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="baseball,棒壘球,Box Score,攻守資料表">
+        <meta name="author" content="samuel772014">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link  href="./img/帽標.jpg " rel="icon" type="image/jpg">
+        <link rel="stylesheet" href="./css/項目.css"> 
+        <title>灣流騎士球球隊攻守資料</title>
+
+        <style>
+            body{
+                background-image: url("img/透明隊徽2.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: 50%;
+            }
+
+            table{
+                border-collapse: collapse ;
+                font-family: 儷黑 Pro ;
+                margin: 30px;
+            }
+
+            table,th,td{
+                border: 5px solid black;
+            }
+            
+            .table-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            form{
+                background-color: rgb(217, 233, 231);
+                border: 7px solid #679471;
+                border-radius: 18px;
+                padding: 15px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1 style="text-align: center; font-size: x-large; color:black;" >灣流騎士球球隊攻守資料</h1>
+        <nav class="navBar">
+            <li><a href="./首頁.html"><p>首頁</p></a></li>
+            <li><a href="./球員資料.html"><p>球員資料</p></a></li>
+            <li><a href="./打者資料.html"><p>打者資料</p></a></li>
+            <li><a href="./投手資料.html"><p>投手資料</p></a></li>
+            <li><a href="./約賽聯絡.html"><p>約賽聯絡</p></a></li>
+        </nav>
+        <div class="table-container" >
+            <table   style="background-color: rgb(204, 200, 200);" >
+                <tr>
+                    <th>背號</th>
+                    <th>姓名</th>
+                    <th>IP</th>
+                    <th>TBF</th>
+                    <th>K</th>
+                    <th>BB</th>
+                    <th>ER</th>
+                    <th>ERA</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>K/9</th>
+                    <th>BB/9</th>
+                    <th>BA</th>
+                    <th>OBA</th>
+                </tr>
+                <tr>
+                    <td>背號</td>
+                    <td>姓名</td>
+                    <td>IP</td>
+                    <td>TBF</td>
+                    <td>K</td>
+                    <td>BB</td>
+                    <td>ER</td>
+                    <td>ERA</td>
+                    <td>W</td>
+                    <td>L</td>
+                    <td>K/9</td>
+                    <td>BB/9</td>
+                    <td>BA</td>
+                    <td>OBA</td>
+                </tr>
+            </table>
+        </div>
+        <form >
+            <fieldset>
+                <legend>投球成績登錄</legend>
+                <label for="number">背號</label>
+                <input type="text" id="number">
+                <br><br>
+                <label for="ip">投球局數</label>
+                <input type="text" id="ip">
+                <label for="tbf">面對人次</label>
+                <input type="text" id="tbf">
+                <br><br>
+                <label for="pk">三振</label>
+                <input type="text" id="pk">
+                <label for="pbb">保送</label>
+                <input type="text" id="pbb">
+                <br><br>
+                <label for="ph">被安打</label>
+                <input type="text" id="ph">
+                <label for="per">自責分</label>
+                <input type="text" id="per">                   
+                
+
+            </fieldset>
+        </form>
+
+    </body>
+
+</html>

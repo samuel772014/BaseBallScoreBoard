@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="baseball,棒壘球,Box Score,攻守資料表">
+        <meta name="author" content="samuel772014">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link  href="./img/帽標.jpg " rel="icon" type="image/jpg">
+        <link rel="stylesheet" href="./css/項目.css"> 
+        <title>灣流騎士球球隊攻守資料</title>
+
+        <style>
+            body{
+                background-image: url("img/透明隊徽2.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: 50%;
+            }
+
+            table{
+                border-collapse: collapse ;
+                font-family: 儷黑 Pro ;
+                margin: 30px;
+            }
+
+            table,th,td{
+                border: 5px solid black;
+            }
+            
+        
+            table th {
+                font-size: xx-large;
+                font-weight: bold;
+            }
+
+            table td {
+                font-weight: bold;
+            }
+
+            .table-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            form{
+                background-color: rgb(217, 233, 231);
+                border: 7px solid #679471;
+                border-radius: 18px;
+                padding: 15px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <h1 style="text-align: center; font-size: x-large; color:black;" >灣流騎士球球隊攻守資料</h1>
+        <nav class="navBar">
+            <li><a href="./首頁.html"><p>首頁</p></a></li>
+            <li><a href="./球員資料.html"><p>球員資料</p></a></li>
+            <li><a href="./打者資料.html"><p>打者資料</p></a></li>
+            <li><a href="./投手資料.html"><p>投手資料</p></a></li>
+            <li><a href="./約賽聯絡.html"><p>約賽聯絡</p></a></li>
+        </nav>
+
+            <div class="table-container">
+            <table style="background-color: rgb(204, 200, 200);">
+                <tr>
+                    <th>姓名</th>
+                    <th>守備位置</th>
+                    <th>左/右打,左/右投</th>
+                    <th>備註</th>
+                </tr>
+                <tr>
+                    <td>謝烘順</td>
+                    <td>OF/IF</td>
+                    <td>右打/右投</td>
+                    <td>隊長</td>
+                </tr>
+                <tr>
+                    <td>李宜學</td>
+                    <td>OF/IF/P</td>
+                    <td>右打/右投</td>
+                    <td>財務</td>
+                </tr>
+                <tr>
+                    <td>林信宏</td>
+                    <td>IF</td>
+                    <td>右打/右投</td>
+                    <td>領隊</td>
+                </tr>
+                <tr>
+                    <td>林理昂</td>
+                    <td>IF</td>
+                    <td>左打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>陳威儒</td>
+                    <td>IF/P</td>
+                    <td>右打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>鍾長龍</td>
+                    <td>IF/OF</td>
+                    <td>右打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>康朝均</td>
+                    <td>IF</td>
+                    <td>左打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>謝昌益</td>
+                    <td>OF</td>
+                    <td>左打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>賴長逸</td>
+                    <td>OF/P</td>
+                    <td>右打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>周哲偉</td>
+                    <td>IF/OF</td>
+                    <td>右打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>林義傑</td>
+                    <td>OF/P</td>
+                    <td>兩打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>梁育誠</td>
+                    <td>OF/P</td>
+                    <td>右打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>楊伯仲</td>
+                    <td>IF</td>
+                    <td>右打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>張勝和</td>
+                    <td>IF/OF</td>
+                    <td>右打/右投</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>廖漢德</td>
+                    <td>OF/P</td>
+                    <td>左打/左投</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <form>
+            <fieldset>
+                <legend>新球員加入資料</legend>
+                <label for="number">背號</label>
+                <input type="text" id="number">
+                <label for="username">姓名</label>
+                <input type="text" id="username">
+                
+                <br><br>
+                
+                <label for="remark">備註</label>
+                <input type="text" id="remark">
+                
+                <br><br>
+                
+                <input type="radio" name="position" id="of">
+                <label for="of">OF外野手</label>
+                <input type="radio" name="position" id="if">
+                <label for="if">IF內野手</label>
+                <input type="radio" name="position" id="pitcher">
+                <label for="pitcher">P投手</label>
+
+                <br><br>
+
+                <input type="radio" name="batside" id="right">
+                <label for="right">右打</label>
+                <input type="radio" name="batside" id="left">
+                <label for="left">左打</label>
+                <input type="radio" name="batside" id="both">
+                <label for="both">兩打</label>
+            </fieldset>
+
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,259 @@
+/* 標題目錄 */
+
+.demo{
+    height: 20rem;
+    width: 15%;
+    border-right: 11px solid #e5bb8a;
+    border-radius: 15px;
+    margin: 0px;
+    display: inline-block;
+    vertical-align:top; 
+} 
+
+#graydiv {
+    border-top: 0px solid #204468;
+    border-bottom: 0px solid #45484b;
+    background-color: #e9e0b1;
+    width: 100%;
+    height: 33%;
+    text-align: center;
+    
+}    
+
+#graydiv:hover{
+    background-color: rgb(224, 209, 68);
+}    
+
+
+.demo a{
+    color: rgb(7, 7, 6);
+    text-align: center; 
+    vertical-align: 100% ;
+    text-decoration:none;
+    padding: 60px auto 30px;
+}    
+
+
+/* 右邊排版 */
+
+.rightSide{
+    height: auto;
+    width: 80%;
+    display: inline-block;
+    position: absolute;
+}
+
+/* 球隊名單 */
+
+.teamCon{
+    width: 70%;
+    background-color: #f1edd6;
+    font-size: large;
+    position: absolute;
+    right: 20%;
+}
+
+.teamInfor{
+    background-color: #f3f3ee;
+    height: 30%;
+    width: 35%;
+    border: 5px solid #96969b;
+    border-radius: 15px;
+    overflow:hidden;
+    margin: 10px;
+}
+.teamInfor:hover{
+    
+    transition-duration: 800ms;
+    transition-timing-function:ease-in-out ;
+    width: 80%;
+    
+    
+}
+
+.teamInfor:hover .teamMsg{
+    
+    display: inline-block;
+    
+}
+
+.teamMsg{
+    display: none;
+}
+
+
+.teamInfor img{
+    text-align: center;
+    height: 50%;
+    width: 50%;
+}
+
+/* 記錄區 */
+
+.userScore{
+    width: 80%;
+    background-color: #f1edd6;
+    font-size: large;
+    
+}
+
+#userPitchScore{
+    width: 80%;
+    display: flex;
+    /* margin: 10px; */
+    /* background-color:yellow; */
+}
+
+#userBattingScore{
+    width: 80%;
+    display: flex;
+    /* margin: 10px; */
+    /* background-color:yellow; */
+}
+
+.inputScore{
+    font-size: x-large;
+    width: 100%;
+}
+
+.input-field {
+    width: 5; 
+}
+
+.idPassword{
+    height: 10rem;
+    width: 10%;
+    background-color: #e4e4e6;
+    font-size: x-large;
+    margin: 5px;
+
+}
+
+/* 賽程區 */
+
+.map{
+    width: 80%; 
+    height: 250px;
+    border: 3px solid #96969b;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 2px;
+    overflow:scroll;
+    overflow-x:hidden;
+    position:relative;
+    
+    background-color: #e4e4e6;
+     
+    
+    
+}
+.map table{
+    width: 80%;
+    background-color: #ffffffaf;
+    font-size: large;
+    
+    
+    
+}
+
+
+
+.searchButton{
+    border: 3px outset #5baa89;
+    font-weight: bold ;
+    font-size: medium;
+    width: 10%;
+    height: 75px;
+    border-radius: 10px;
+    position:absolute;
+    right: 0;
+    top: 0;
+}
+
+
+
+.searchButton:hover{
+    background-color: rgb(188, 190, 188);
+    
+}
+
+#matchDiv{
+    display: inline-block; 
+    vertical-align:top; 
+    height: 400px;
+    
+}
+
+.matchInput{
+    display: inline-block;
+    font-size: large;
+}
+
+.newDivClass{
+    height: 500px;
+}
+/* .reduceImg{
+    width: 40px; 
+    height: 40px; 
+    position: absolute; 
+    right: 0; 
+    bottom: 0;
+} */
+
+
+
+
+
+
+#userBattingScoreBoard{ 
+    width: 40%;
+    background-color: yellow;
+    position: absolute;
+    /* left: 55%; */
+    right: 20%;
+}    
+#userPitchScoreBoard{ 
+    width: 40%;
+    background-color: yellow;
+    float: right;
+    position: absolute;
+    right: 20%;
+}
+
+
+
+.buttonModel{
+    border: 3px outset #5baa89;
+    border-radius: 10px;
+    font-weight: bold ;
+    font-size: medium;
+    
+}    
+.buttonModel:hover{
+    background-color: rgb(188, 190, 188);
+    
+}
+
+h2{
+    text-align: center;
+    font-size: xx-large;
+   
+}
+
+h1{
+    background-image: url("../img/black-chalkboard-background.jpg");
+    height: 100px;
+    font-size: 500px;
+    color: rgb(200, 202, 66);
+}
+
+body{
+    background: transparent url("../img/background.jpg") ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50%;
+    background-size: 40%;
+
+}
+
+

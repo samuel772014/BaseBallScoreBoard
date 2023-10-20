@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="baseball,棒壘球,Box Score,攻守資料表">
+        <meta name="author" content="samuel772014">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="../css/專題.css"> 
+        <title>中區球隊資料平台</title>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <style>
+            
+            table{
+                border-collapse: collapse ;
+            }
+
+            table,th,td{
+                border: 5px solid black;
+            }
+            h1{
+                text-align: center;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div>
+            <h1 style="font-size: 50px; font-family: 儷黑 Pro; ">中區球隊資料平台</h1>
+        </div>
+        <div >   
+            <div class="demo" >
+                <a href="./球隊資料.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">球隊資料</p></div></a>
+                <a href="./約賽平台model.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">約賽賽程</p></div></a>
+                <a href="./個人紀錄.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">個人紀錄</p></div></a>
+                <fieldset class="idPassword">
+                    <legend style="font-size: large; font-weight: bold;">會員登入區</legend>
+                    <label for="userId">帳號</label>
+                    <input type="text" id="userId" size="5">
+                    <br>
+                    <label for="userPassword">密碼</label>
+                    <input type="password" id="userPassword" size="10"> 
+                    <button onclick="userLogin()" >登入</button> 
+                </fieldset>
+            </div >
+            <div class="rightSide">
+                <div class="map">
+                    <div  id="matchDiv" >
+                        <h2 >櫻花棒球場約賽時間</h2>
+                        <iframe   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97904.03100353488!2d120.60727957129592!3d24.228473456567464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d8824f011e1%3A0x21a8d34930ce5d50!2z5qu76Iqx5qOS55CD5aC0!5e0!3m2!1szh-TW!2stw!4v1689132000419!5m2!1szh-TW!2stw" ></iframe>
+                        <form   class= "matchInput">
+                            <label for="matchTime">比賽時間</label>
+                            <input type="date" id="matchTime">
+                            <label for="ampm">時間</label>
+                            <select name="matchAmPm" id="ampm">
+                                <option value="早上">早上</option>
+                                <option value="下午">下午</option>
+                                <option value="晚上">晚上</option>
+                            </select>
+                            <br>
+                            <label for="teamHomeName">主隊名稱</label>
+                            <input type="text" id="teamHomeName" size="10">
+                            <label for="teamHomeConnection">主隊聯絡電話</label>
+                            <input type="text" id="teamHomeConnection" size="10">
+                            <br>
+                            <label for="teamGuestName">客隊名稱</label>
+                            <input type="text" id="teamGuestName" size="10">
+                            <label for="teamGuestConnection">客隊聯絡電話</label>
+                            <input type="text" id="teamGuestConnection" size="10">
+                            <button id="matchConferm1" type="button">確認輸入</button>
+                            <br><br><br>
+                            
+                        </form>
+                        <table width="800"  id="matchTable1">
+                            <tr>
+                                <th>比賽日期</th>
+                                <th>主隊名稱</th>
+                                <th>聯絡方式</th>
+                                <th>&nbsp;</th>
+                                <th>客隊名稱</th>
+                                <th>聯絡方式</th>
+                                <th>刪除</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <button id = "searchMatch1" class="searchButton">按我展開表格</button>
+                    
+                </div>
+                
+                <div class ="map" >
+                    <div  id="matchDiv" >
+                        <h2 >台中棒球場約賽時間</h2>
+                        <iframe   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97904.03100353488!2d120.60727957129592!3d24.228473456567464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d683879159b%3A0x9f05091ba7388009!2z5pWZ6IKy6YOo6auU6IKy572y6Ie65Lit5qOS55CD5aC0!5e0!3m2!1szh-TW!2stw!4v1689133592823!5m2!1szh-TW!2stw"></iframe>
+                         <form   class= "matchInput">
+                            <label for="matchTime">比賽時間</label>
+                            <input type="date" id="matchTime">
+                            <label for="ampm">時間</label>
+                            <select name="matchAmPm" id="ampm">
+                                <option value="早上">早上</option>
+                                <option value="下午">下午</option>
+                                <option value="晚上">晚上</option>
+                            </select>
+                            <br>
+                            <label for="teamHomeName">主隊名稱</label>
+                            <input type="text" id="teamHomeName" size="10">
+                            <label for="teamHomeConnection">主隊聯絡電話</label>
+                            <input type="text" id="teamHomeConnection" size="10">
+                            <br>
+                            <label for="teamGuestName">客隊名稱</label>
+                            <input type="text" id="teamGuestName" size="10">
+                            <label for="teamGuestConnection">客隊聯絡電話</label>
+                            <input type="text" id="teamGuestConnection" size="10">
+                            <button id="matchConferm2" type="button">確認輸入</button>
+                            <br><br><br>
+                            
+                        </form>
+                        <table width="800"  id="matchTable2" >
+                            <tr>
+                                <th>比賽日期</th>
+                                <th>主隊名稱</th>
+                                <th>聯絡方式</th>
+                                <th>&nbsp;</th>
+                                <th>客隊名稱</th>
+                                <th>聯絡方式</th>
+                                <th>刪除</th>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <button id = "searchMatch2" class="searchButton">按我展開表格</button>
+                
+                    
+                </div>
+                
+                
+                    <div class="map">
+                        <div  id="matchDiv" >
+                            <h2 >台中萬壽棒球場約賽時間</h2>
+                            <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97904.03100353488!2d120.60727957129592!3d24.228473456567464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693dbdba117e79%3A0xefa93e98387692e6!2z5Y-w5Lit6JCs5aO95qOS55CD5aC0!5e0!3m2!1szh-TW!2stw!4v1689133719053!5m2!1szh-TW!2stw" ></iframe>
+                                <form   class= "matchInput">
+                                <label for="matchTime">比賽時間</label>
+                                <input type="date" id="matchTime">
+                                <label for="ampm">時間</label>
+                                <select name="matchAmPm" id="ampm">
+                                    <option value="早上">早上</option>
+                                    <option value="下午">下午</option>
+                                    <option value="晚上">晚上</option>
+                                </select>
+                                <br>
+                                <label for="teamHomeName">主隊名稱</label>
+                                <input type="text" id="teamHomeName" size="10">
+                                <label for="teamHomeConnection">主隊聯絡電話</label>
+                                <input type="text" id="teamHomeConnection" size="10">
+                                <br>
+                                <label for="teamGuestName">客隊名稱</label>
+                                <input type="text" id="teamGuestName" size="10">
+                                <label for="teamGuestConnection">客隊聯絡電話</label>
+                                <input type="text" id="teamGuestConnection" size="10">
+                                <button id="matchConferm3" type="button">確認輸入</button>
+                                <br><br><br>
+                                
+                            </form>
+                            <table width="800"  id="matchTable3">
+                                <tr>
+                                    <th>比賽日期</th>
+                                    <th>主隊名稱</th>
+                                    <th>聯絡方式</th>
+                                    <th>&nbsp;</th>
+                                    <th>客隊名稱</th>
+                                    <th>聯絡方式</th>
+                                    <th>刪除</th>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <button id = "searchMatch3" class="searchButton">按我展開表格</button>
+                </div>
+                
+               
+                    <div class="map">
+                        <div  id="matchDiv" >
+                            <h2 >祥順運動公園棒球場約賽時間</h2>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97904.03100353488!2d120.60727957129592!3d24.228473456567464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d4acf23e17b%3A0x627bf96d9ca2c244!2z56Wl6aCG6YGL5YuV5YWs5ZyS5qOS55CD5aC0!5e0!3m2!1szh-TW!2stw!4v1689139745093!5m2!1szh-TW!2stw"></iframe>
+                            <form   class= "matchInput">
+                                <label for="matchTime">比賽時間</label>
+                                <input type="date" id="matchTime">
+                                <label for="ampm">時間</label>
+                                <select name="matchAmPm" id="ampm">
+                                    <option value="早上">早上</option>
+                                    <option value="下午">下午</option>
+                                    <option value="晚上">晚上</option>
+                                </select>
+                                <br>
+                                <label for="teamHomeName">主隊名稱</label>
+                                <input type="text" id="teamHomeName" size="10">
+                                <label for="teamHomeConnection">主隊聯絡電話</label>
+                                <input type="text" id="teamHomeConnection" size="10">
+                                <br>
+                                <label for="teamGuestName">客隊名稱</label>
+                                <input type="text" id="teamGuestName" size="10">
+                                <label for="teamGuestConnection">客隊聯絡電話</label>
+                                <input type="text" id="teamGuestConnection" size="10">
+                                <button id="matchConferm4" type="button">確認輸入</button>
+                                <br><br><br>
+                                
+                            </form>
+                            <table width="800"  id="matchTable4">
+                                <tr>
+                                    <th>比賽日期</th>
+                                    <th>主隊名稱</th>
+                                    <th>聯絡方式</th>
+                                    <th>&nbsp;</th>
+                                    <th>客隊名稱</th>
+                                    <th>聯絡方式</th>
+                                    <th>刪除</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <button id = "searchMatch4"class="searchButton">按我展開表格</button>
+                </div>
+                
+                <div  class ="map">
+                        <div  id="matchDiv" >
+                            <h2 >金龍棒球場約賽時間</h2>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97904.95027955822!2d120.60493074450744!3d24.227277953215104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d4b06006235%3A0x44a5b992ddae2d5!2z6YeR6b6N5qOS55CD5aC0!5e0!3m2!1szh-TW!2stw!4v1689139853661!5m2!1szh-TW!2stw" ></iframe>
+                            <form   class= "matchInput">
+                                <label for="matchTime">比賽時間</label>
+                                <input type="date" id="matchTime">
+                                <label for="ampm">時間</label>
+                                <select name="matchAmPm" id="ampm">
+                                    <option value="早上">早上</option>
+                                    <option value="下午">下午</option>
+                                    <option value="晚上">晚上</option>
+                                </select>
+                                <br>
+                                <label for="teamHomeName">主隊名稱</label>
+                                <input type="text" id="teamHomeName" size="10">
+                                <label for="teamHomeConnection">主隊聯絡電話</label>
+                                <input type="text" id="teamHomeConnection" size="10">
+                                <br>
+                                <label for="teamGuestName">客隊名稱</label>
+                                <input type="text" id="teamGuestName" size="10">
+                                <label for="teamGuestConnection">客隊聯絡電話</label>
+                                <input type="text" id="teamGuestConnection" size="10">
+                                <button id="matchConferm5" type="button">確認輸入</button>
+                                <br><br><br>
+                                
+                            </form>
+                            <table width="800"  id="matchTable5">
+                                <tr>
+                                    <th>比賽日期</th>
+                                    <th>主隊名稱</th>
+                                    <th>聯絡方式</th>
+                                    <th>&nbsp;</th>
+                                    <th>客隊名稱</th>
+                                    <th>聯絡方式</th>
+                                    <th>刪除</th>
+                                </tr>
+                            </table>
+                        </div>
+                     <button id = "searchMatch5"class="searchButton">按我展開表格</button>
+                </div>
+                
+                <div  class ="map">
+                    <div  id="matchDiv" >
+                        <h2 >太原棒球場約賽時間</h2>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97904.95027955822!2d120.60493074450744!3d24.227277953215104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346918042592b605%3A0x6b174b593d158f6b!2z5aSq5Y6f5qOS55CD5aC0!5e0!3m2!1szh-TW!2stw!4v1689139941974!5m2!1szh-TW!2stw" ></iframe>
+                        <form   class= "matchInput">
+                            <label for="matchTime">比賽時間</label>
+                            <input type="date" id="matchTime">
+                            <label for="ampm">時間</label>
+                            <select name="matchAmPm" id="ampm">
+                                <option value="早上">早上</option>
+                                <option value="下午">下午</option>
+                                <option value="晚上">晚上</option>
+                            </select>
+                            <br>
+                            <label for="teamHomeName">主隊名稱</label>
+                            <input type="text" id="teamHomeName" size="10">
+                            <label for="teamHomeConnection">主隊聯絡電話</label>
+                            <input type="text" id="teamHomeConnection" size="10">
+                            <br>
+                            <label for="teamGuestName">客隊名稱</label>
+                            <input type="text" id="teamGuestName" size="10">
+                            <label for="teamGuestConnection">客隊聯絡電話</label>
+                            <input type="text" id="teamGuestConnection" size="10">
+                            <button id="matchConferm6" type="button">確認輸入</button>
+                            <br><br><br>
+                            
+                        </form>
+                        <table width="800"  id="matchTable6">
+                            <tr>
+                                <th>比賽日期</th>
+                                <th>主隊名稱</th>
+                                <th>聯絡方式</th>
+                                <th>&nbsp;</th>
+                                <th>客隊名稱</th>
+                                <th>聯絡方式</th>
+                                <th>刪除</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <button id = "searchMatch6" class="searchButton">按我展開表格</button>
+                </div>
+
+                <div  class ="map">
+                    <div  id="matchDiv" >
+                        <h2 >老馬棒球場約賽時間</h2>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116502.08438004645!2d120.5543849972656!3d24.14751780000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d521ae6bd9b%3A0x9fdaeffeac1bb876!2z6ICB6aas5aOY55CD5aC0!5e0!3m2!1szh-TW!2stw!4v1689140063568!5m2!1szh-TW!2stw" ></iframe>
+                        <form   class= "matchInput">
+                            <label for="matchTime">比賽時間</label>
+                            <input type="date" id="matchTime">
+                            <label for="ampm">時間</label>
+                            <select name="matchAmPm" id="ampm">
+                                <option value="早上">早上</option>
+                                <option value="下午">下午</option>
+                                <option value="晚上">晚上</option>
+                            </select>
+                            <br>
+                            <label for="teamHomeName">主隊名稱</label>
+                            <input type="text" id="teamHomeName" size="10">
+                            <label for="teamHomeConnection">主隊聯絡電話</label>
+                            <input type="text" id="teamHomeConnection" size="10">
+                            <br>
+                            <label for="teamGuestName">客隊名稱</label>
+                            <input type="text" id="teamGuestName" size="10">
+                            <label for="teamGuestConnection">客隊聯絡電話</label>
+                            <input type="text" id="teamGuestConnection" size="10">
+                            <button id="matchConferm7" type="button">確認輸入</button>
+                            <br><br><br>
+                            
+                        </form>
+                        <table width="800"  id="matchTable7">
+                            <tr>
+                                <th>比賽日期</th>
+                                <th>主隊名稱</th>
+                                <th>聯絡方式</th>
+                                <th>&nbsp;</th>
+                                <th>客隊名稱</th>
+                                <th>聯絡方式</th>
+                                <th>刪除</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <button id = "searchMatch7"class="searchButton">按我展開表格</button>
+                </div>
+                
+            </div>
+
+            
+        </div>
+        <script>
+            function userLogin(){
+                var id = document.getElementById("userId").value;
+                var password = document.getElementById("userPassword").value;
+                // console.log(id);
+                if (id == "samuel772014" ,password = "1234"){
+                    alert("登入成功");
+                    location.href="http://127.0.0.1:5500/%E5%B0%88%E9%A1%8C/%E5%80%8B%E4%BA%BA%E7%B4%80%E9%8C%84.html"
+                }else{
+                    alert("帳號或密碼錯誤")
+                }
+            }
+
+                
+
+            $(() => {
+                
+                $("#matchConferm1").click(function(){
+                    window.confirm(`確定輸入
+                    日期: ${$("#matchTime").val()} ${$("#ampm").val()}  由 ${$("#teamHomeName").val()}對上${$("#teamGuestName").val()}`)
+                    console.log("OK")
+                    $("#matchTable1").append(`
+                                <tr>
+                                    <td>>${$("#matchTime").val()}  ${$("#ampm").val()}</td>
+                                    <td>${$("#teamHomeName").val()}</td>
+                                    <td>${$("#teamHomeConnection").val()}</td>
+                                    <td>V.S</td>
+                                    <td>${$("#teamGuestName").val()}</td>
+                                    <td>${$("#teamGuestConnection").val()}</td>
+                                    <td><button onclick="matchDelete(this)" >刪除</button></td>
+                                </tr>
+                    `)
+                })
+                $("#matchConferm2").click(function(){
+                    window.confirm(`確定輸入
+                    日期: ${$("#matchTime").val()} ${$("#ampm").val()}  由 ${$("#teamHomeName").val()}對上${$("#teamGuestName").val()}`)
+                    // console.log($("#teamHomeName").val())
+                    $("#matchTable2").append(`
+                                <tr>
+                                    <td>>${$("#matchTime").val()}  ${$("#ampm").val()}</td>
+                                    <td>${$("#teamHomeName").val()}</td>
+                                    <td>${$("#teamHomeConnection").val()}</td>
+                                    <td>V.S</td>
+                                    <td>${$("#teamGuestName").val()}</td>
+                                    <td>${$("#teamGuestConnection").val()}</td>
+                                    <td><button onclick="matchDelete(this)" >刪除</button></td>
+                                </tr>
+                    `)
+                })
+                $("#matchConferm3").click(function(){
+                    window.confirm(`確定輸入
+                    日期: ${$("#matchTime").val()} ${$("#ampm").val()}  由 ${$("#teamHomeName").val()}對上${$("#teamGuestName").val()}`)
+                    // console.log($("#teamHomeName").val())
+                    $("#matchTable3").append(`
+                                <tr>
+                                    <td>>${$("#matchTime").val()}  ${$("#ampm").val()}</td>
+                                    <td>${$("#teamHomeName").val()}</td>
+                                    <td>${$("#teamHomeConnection").val()}</td>
+                                    <td>V.S</td>
+                                    <td>${$("#teamGuestName").val()}</td>
+                                    <td>${$("#teamGuestConnection").val()}</td>
+                                    <td><button onclick="matchDelete(this)" >刪除</button></td>
+                                </tr>
+                    `)
+                })
+                $("#matchConferm4").click(function(){
+
+                    window.confirm(`確定輸入
+                    日期: ${$("#matchTime").val()} ${$("#ampm").val()}  由 ${$("#teamHomeName").val()}對上${$("#teamGuestName").val()}`)
+                    // console.log($("#teamHomeName").val())
+                    $("#matchTable4").append(`
+                                <tr>
+                                    <td>>${$("#matchTime").val()}  ${$("#ampm").val()}</td>
+                                    <td>${$("#teamHomeName").val()}</td>
+                                    <td>${$("#teamHomeConnection").val()}</td>
+                                    <td>V.S</td>
+                                    <td>${$("#teamGuestName").val()}</td>
+                                    <td>${$("#teamGuestConnection").val()}</td>
+                                    <td><button onclick="matchDelete(this)" >刪除</button></td>
+                                </tr>
+                    `)
+                })
+                $("#matchConferm5").click(function(){
+                    window.confirm(`確定輸入
+                    日期: ${$("#matchTime").val()} ${$("#ampm").val()}  由 ${$("#teamHomeName").val()}對上${$("#teamGuestName").val()}`)
+                    // console.log($("#teamHomeName").val())
+                    $("#matchTable5").append(`
+                                <tr>
+                                    <td>>${$("#matchTime").val()}  ${$("#ampm").val()}</td>
+                                    <td>${$("#teamHomeName").val()}</td>
+                                    <td>${$("#teamHomeConnection").val()}</td>
+                                    <td>V.S</td>
+                                    <td>${$("#teamGuestName").val()}</td>
+                                    <td>${$("#teamGuestConnection").val()}</td>
+                                    <td><button onclick="matchDelete(this)" >刪除</button></td>
+                                </tr>
+                    `)
+                })
+                $("#matchConferm6").click(function(){
+                    window.confirm(`確定輸入
+                    日期: ${$("#matchTime").val()} ${$("#ampm").val()}  由 ${$("#teamHomeName").val()}對上${$("#teamGuestName").val()}`)
+                    // console.log($("#teamHomeName").val())
+                    $("#matchTable6").append(`
+                                <tr>
+                                    <td>>${$("#matchTime").val()}  ${$("#ampm").val()}</td>
+                                    <td>${$("#teamHomeName").val()}</td>
+                                    <td>${$("#teamHomeConnection").val()}</td>
+                                    <td>V.S</td>
+                                    <td>${$("#teamGuestName").val()}</td>
+                                    <td>${$("#teamGuestConnection").val()}</td>
+                                    <td><button onclick="matchDelete(this)" >刪除</button></td>
+                                </tr>
+                    `)
+                })
+                $("#matchConferm7").click(function(){
+                    window.confirm(`確定輸入
+                    日期: ${$("#matchTime").val()} ${$("#ampm").val()}  由 ${$("#teamHomeName").val()}對上${$("#teamGuestName").val()}`)
+                    // console.log($("#teamHomeName").val())
+                    $("#matchTable7").append(`
+                    <tr>
+                        <td>>${$("#matchTime").val()}  ${$("#ampm").val()}</td>
+                        <td>${$("#teamHomeName").val()}</td>
+                        <td>${$("#teamHomeConnection").val()}</td>
+                        <td>V.S</td>
+                        <td>${$("#teamGuestName").val()}</td>
+                        <td>${$("#teamGuestConnection").val()}</td>
+                        <td><button onclick="matchDelete(this)" >刪除</button></td>
+                        </tr>
+                        `)
+                    })
+                    
+                    
+                
+                $(function() {
+                    $( "#searchMatch1" ).click(function() {
+                        $( "#searchMatch1" ).parent().toggleClass( "newDivClass", 1000 );
+                        return false;
+                    });
+                });
+                $(function() {
+                    $( "#searchMatch2" ).click(function() {
+                        console.log("OK")
+                    $( "#searchMatch2" ).parent().toggleClass( "newDivClass", 1000 );
+                    return false;
+                        });
+                    });               
+                $(function() {
+                    $( "#searchMatch3" ).click(function() {
+                        $( "#searchMatch3" ).parent().toggleClass( "newDivClass", 1000 );
+                        return false;
+                    });
+                });
+                $(function() {
+                    $( "#searchMatch4" ).click(function() {
+                    $( "#searchMatch4" ).parent().toggleClass( "newDivClass", 1000 );
+                    return false;
+                        });
+                    });
+                $(function() {
+                    $( "#searchMatch5" ).click(function() {
+                    $( "#searchMatch5" ).parent().toggleClass( "newDivClass", 1000 );
+                    return false;
+                        });
+                    });
+                $(function() {
+                    $( "#searchMatch6" ).click(function() {
+                    $( "#searchMatch6" ).parent().toggleClass( "newDivClass", 1000 );
+                    return false;
+                        });
+                    });
+                $(function() {
+                    $( "#searchMatch7" ).click(function() {
+                    $( "#searchMatch7" ).parent().toggleClass( "newDivClass", 1000 );
+                    return false;
+                        });
+                    });
+               
+                })
+
+                function matchDelete(sender){
+                    if (confirm(`是否要刪除資料？ `)){    
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+
+                    }
+                }
+        </script>
+      
+
+        
+    </body>
+
+</html>

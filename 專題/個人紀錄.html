@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="baseball,棒壘球,Box Score,攻守資料表">
+        <meta name="author" content="samuel772014">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="../css/專題.css"> 
+        <title>中區球隊資料平台</title>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <style>
+            
+            table{
+                border-collapse: collapse ;
+            }
+
+            table,th,td{
+                border: 5px solid black;
+               
+            }
+            h1{
+                text-align: center;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div>
+            <h1 style="font-size: 50px; font-family: 儷黑 Pro; ">中區球隊資料平台</h1>
+        </div>
+        <div >   
+            <div class="demo" >
+                <a href="./球隊資料.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">球隊資料</p></div></a>
+                <a href="./約賽平台model.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">約賽賽程</p></div></a>
+                <a href="./個人紀錄.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">個人紀錄</p></div></a>
+                <fieldset class="idPassword">
+                    <legend style="font-size: large; font-weight: bold;">會員登入區</legend>
+                    <label for="userId">帳號</label>
+                    <input type="text" id="userId" size="5">
+                    <br>
+                    <label for="userPassword">密碼</label>
+                    <input type="password" id="userPassword" size="10">
+                    <button onclick="userLogin();">登入</button> 
+                </fieldset>
+            </div >
+            <div class="rightSide">
+                <table   class="userScore"   >
+                    <tr>
+                        <th>AB</th>
+                        <th>H</th>
+                        <th>RBI</th>
+                        <th>AVG</th>
+                        <th>1B</th>
+                        <th>2B</th>
+                        <th>3B</th>
+                        <th>HR</th>
+                        <th>BB</th>
+                        <th>K</th>
+                        <th style="width: 10px;" >SLG(長打率)</th>
+                        <th style="width: 10px;">OBP(上壘率)</th>
+                        <th style="width: 10px;">OPS(攻擊指數)</th>
+                    </tr>
+                    <tr>
+                        <td id="historyAb">AB</td>
+                        <td id="historyH">H</td>
+                        <td id="historyRbi">RBI</td>
+                        <td id="historyAvg">AVG</td>
+                        <td id="history1B">1B</td>
+                        <td id="history2B">2B</td>
+                        <td id="history3B">3B</td>
+                        <td id="historyHr">HR</td>
+                        <td id="historyBb">BB</td>
+                        <td id="historyK">K</td>
+                        <td id="historySlg">SLG</td>
+                        <td id="historyObp">OBP</td>
+                        <td id="historyOps">OPS</td>
+                    </tr>
+                </table>
+                    <br><br>
+                    <div id="userBattingScore">
+                        <form >
+                            <fieldset class="inputScore" >
+                                <legend>打擊成績登錄</legend>
+                                <label for="onebase">1B</label>
+                                <input type="radio" id="onebase" name="batter" value="1b">
+                                <br>
+                                <label for="twobase">2B</label>
+                                <input type="radio" id="twobase" name="batter" value="2b">
+                                <br>
+                                <label for="thirdbase">3B</label>
+                                <input type="radio" id="thirdbase" name="batter" value="3b">
+                                <br>
+                                <label for="homerun">HR</label>
+                                <input type="radio" id="homerun" name="batter" value="hr">
+                                <br>
+                                <label for="out">滾地OR飛球出局</label>
+                                <input type="radio" id="out" name="batter" value="out">
+                                <br>
+                                <label for="strikeout">K</label>
+                                <input type="radio" id="strikeout" name="batter" value="so">
+                                <br>
+                                <label for="bb">BB</label>
+                                <input type="radio" id="bb" name="batter" value="bb">
+                                <br>
+                                <label for="rbi">RBI</label>
+                                <input type="number" id="rbi" name="batter" size="3" min="0" max="10"  value="0">
+                                
+    
+                
+                            </fieldset>
+                        </form>
+                        <button style="margin: 50px;" id="batButton">上傳資料=></button>
+                        <div id="userBattingScoreBoard">
+                            <table   class="userScore" id="batTable" style="position: absolute ;right: 0px;" >
+                                <tr>
+                                    <th>打席編號</th>
+                                    <th>1B</th>
+                                    <th>2B</th>
+                                    <th>3B</th>
+                                    <th>HR</th>
+                                    <th>BB</th>
+                                    <th>K</th>
+                                    <th>RBI</th>
+                                    <th>刪除成績</th>
+                                </tr>
+                                
+                                
+                            </table>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <table  class="userScore"  >
+                        <tr>
+                            <th>IP</th>
+                            <th>TBF</th>
+                            <th>K</th>
+                            <th>BB</th>
+                            <th>ER</th>
+                            <th>ERA</th>
+                            <th>K/9</th>
+                            <th>BB/9</th>
+                            <th >BA(被打擊率)</th>
+                            <th >OBA(被上壘率)</th>
+                        </tr>
+                        <tr>
+                            <td id="historyIp">IP</td>
+                            <td id="historyTbf">TBF</td>
+                            <td id="historyPk">K</td>
+                            <td id="historyPbb">BB</td>
+                            <td id="historyEr">ER</td>
+                            <td id="historyEra">ERA</td>
+                            <td id="historyK9">K/9</td>
+                            <td id="historyBb9">BB/9</td>
+                            <td id="historyBa">BA</td>
+                            <td id="historyOba">OBA</td>
+                        </tr>
+                    </table>
+                    <br><br><br>
+                    <div id="userPitchScore" >
+                        <form >
+                            <fieldset class="inputScore">
+                                <legend>投球成績登錄</legend>
+                                <label for="ipout">出局數</label>
+                                <input type="number" id="ipout" size="3" min="0" max="99" value="0">
+                                <br>
+                                <label for="tbf">面對人次</label>
+                                <input type="number" id="tbf" size="3" min="0" max="99" value="0">
+                                <br>
+                                <label for="pk">三振</label>
+                                <input type="number" id="pk" size="3" min="0" max="99" value="0">
+                                <br>
+                                <label for="pbb">保送</label>
+                                <input type="number" id="pbb" size="3" min="0" max="99" value="0">
+                                <br>
+                                <label for="ph">被安打</label>
+                                <input type="number" id="ph" size="3" min="0" max="99" value="0">
+                                <br>
+                                <label for="per">自責分</label>
+                                <input type="number" id="per" size="3" min="0" max="99" value="0">                   
+                                <br>
+                                <label for="pe">失誤(不死三振)</label>
+                                <input type="number" id="pe" size="3" min="0" max="99" value="0">                   
+                                
+                            
+                            
+                            
+                        </fieldset>
+                    </form>
+                    <button style="margin: 50px;" id="pitchButton">上傳資料=></button>
+                    <div id="userPitchScoreBoard">
+                        <table   class="userScore" id="pitchTable" style="position: absolute ;right: 0px;  " >
+                            <tr>
+                                <th>出局數</th>
+                                <th>IP</th>
+                                <th>TBF</th>
+                                <th>K</th>
+                                <th>BB</th>
+                                <th>H</th>
+                                <th>ER</th>
+                                <th>失誤上壘</th>
+                            </tr>
+                            
+                        </table>
+                        
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        <script>
+            function userLogin(){
+                var id = document.getElementById("userId").value;
+                var password = document.getElementById("userPassword").value;
+                // console.log(id);
+                if (id == "samuel772014" ,password = "1234"){
+                    alert("登入成功");
+                    location.href="http://127.0.0.1:5500/%E5%B0%88%E9%A1%8C/%E5%80%8B%E4%BA%BA%E7%B4%80%E9%8C%84.html"
+                }else{
+                    alert("帳號或密碼錯誤")
+                }
+            }
+
+            
+
+            var batScoreObj = {myAb:1, myOnebase:0, myTwobase:0, myThirdbase:0, myHomerun:0, myBb:0, myStrikeout:0, myOut:0, myRbi:0}
+            batScoreFrequency = 0;
+            var pitchScoreObj = {myIpOut:0, myTbf:0, myPk:0, myPbb:0, myPh:0, myPer:0, myPe:0 } 
+            pitchScoreFrequency = 0
+            $(() => {
+                $('#batButton').click(function(){
+                    batScoreFrequency += 1 ;
+                    var batSample = $("input:radio[name=batter]:checked").val()
+                    var thisTimeRbi = Number.isInteger( parseInt($("#rbi").val()))
+                    if ( thisTimeRbi == false ){
+                        batScoreObj.myRbi += 0;
+                        alert("請輸入整數");
+                        return;
+                    }else{
+                        batScoreObj.myRbi += parseInt($("#rbi").val());
+                    }
+                    
+                    
+                    // console.log( batScoreObj.myOut)
+                    if (batSample =='1b'){
+                        $('#batTable').append(`
+                        <tr>
+                            <td>${batScoreObj.myAb}</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>${$("#rbi").val()}</td>
+                            <td><button onclick="batScoreDelete1b(this, ${batScoreObj.myAb})" class="buttonModel">刪除</button></td>
+                        </tr>
+                        `)
+                        batScoreObj.myOnebase+=1;
+                    }else if(batSample =='2b'){
+                        $('#batTable').append(`
+                        <tr>
+                            <td>${batScoreObj.myAb}</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>${$("#rbi").val()}</td>
+                            <td><button onclick="batScoreDelete2b(this, ${batScoreObj.myAb})" class="buttonModel">刪除</button></td>
+                        </tr>
+                        `)
+                        batScoreObj.myTwobase+=1;
+                    }else if(batSample =='3b'){
+                        $('#batTable').append(`
+                        <tr>
+                            <td>${batScoreObj.myAb}</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>${$("#rbi").val()}</td>
+                            <td><button onclick="batScoreDelete3b(this, ${batScoreObj.myAb})" class="buttonModel">刪除</button></td>
+                        </tr>
+                        `)
+                        batScoreObj.myThirdbase+=1;
+                    }else if(batSample =='hr'){
+                        $('#batTable').append(`
+                        <tr>
+                            <td>${batScoreObj.myAb}</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>${$("#rbi").val()}</td>
+                            <td><button onclick="batScoreDelete4b(this, ${batScoreObj.myAb})" class="buttonModel">刪除</button></td>
+                        </tr>
+                        `)
+                        batScoreObj.myHomerun+=1;
+                    }else if(batSample =='bb'){
+                        $('#batTable').append(`
+                        <tr>
+                            <td>${batScoreObj.myAb}</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>${$("#rbi").val()}</td>
+                            <td><button onclick="batScoreDeleteBb(this, ${batScoreObj.myAb})" class="buttonModel">刪除</button></td>
+                        </tr>
+                        `)
+                        batScoreObj.myBb+=1;
+                    }else if(batSample =='so'){
+                        $('#batTable').append(`
+                        <tr>
+                            <td>${batScoreObj.myAb}</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>${$("#rbi").val()}</td>
+                            <td><button onclick="batScoreDeleteSo(this, ${batScoreObj.myAb})" class="buttonModel">刪除</button></td>
+                        </tr>
+                        `)
+                        batScoreObj.myStrikeout+=1;
+                    }else if(batSample =='out'){
+                        $('#batTable').append(`
+                        <tr>
+                            <td>${batScoreObj.myAb}</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>${$("#rbi").val()}</td>
+                            <td><button onclick="batScoreDeleteOut(this, ${batScoreObj.myAb})" class="buttonModel">刪除</button></td>
+                        </tr>
+                        `)
+                    }else{
+                        $('#batTable').append(`
+                        <tr>
+                            <td>${batScoreObj.myAb}</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>${$("#rbi").val()}</td>
+                            <td><button onclick="batScoreDeleteNone(this, ${batScoreObj.myAb})" class="buttonModel">刪除</button></td>
+                        </tr>
+                        `)
+                        
+                    }
+                    
+                  
+                        batScoreObj.myAb+=1;
+
+                
+                      
+                    $(document).ready(function() { console.log("OK")
+                       var  myab = batScoreObj.myAb-1;
+                       var  my1b = batScoreObj.myOnebase;
+                       var  my2b = batScoreObj.myTwobase;
+                       var  my3b = batScoreObj.myThirdbase;
+                       var  my4b = batScoreObj.myHomerun;
+                       var  mybb = batScoreObj.myBb;
+                       var  myk = batScoreObj.myStrikeout;
+                       var  myrbi = batScoreObj.myRbi;
+                       var  myh = my4b + my3b + my2b + my1b;
+                       var  myavg = (myh/(myab-mybb)).toFixed(2);
+                       var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                       var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                       var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                    $("#historyAb").html(myab);
+                    $("#history1B").html(my1b);
+                    $("#history2B").html(my2b);
+                    $("#history3B").html(my3b);
+                    $("#historyHr").html(my4b);
+                    $("#historyBb").html(mybb);
+                    $("#historyK").html(myk);
+                    $("#historyRbi").html(myrbi);
+                    $("#historyH").html(myh);
+                    $("#historyAvg").html(myavg);
+                    $("#historySlg").html(myslg);
+                    $("#historyObp").html(myobp);
+                    $("#historyOps").html(myobs);
+                    
+                
+                });
+                
+                     if (batScoreFrequency > 6){
+                    
+                         batScoreFrequency = batScoreFrequency-1;
+                            $('#batTable')
+                            .children()
+                            .eq(1)
+                            .remove()
+                        }
+            })    
+                    $('#pitchButton').click(function(){
+                        pitchScoreFrequency += 1 ;
+                        var thisIpout = Number.isInteger( parseInt($("#ipout").val()))
+                        var thisTbf = Number.isInteger( parseInt($("#tbf").val()))
+                        var thisPk = Number.isInteger( parseInt($("#pk").val()))
+                        var thisPbb = Number.isInteger( parseInt($("#pbb").val()))
+                        var thisPh = Number.isInteger( parseInt($("#ph").val()))
+                        var thisPer = Number.isInteger( parseInt($("#per").val()))
+                        var thispe = Number.isInteger( parseInt($("#pe").val()))
+                        var thisIp = (parseInt($("#ipout").val())%3)*0.1 + parseInt($("#ipout").val()/3)
+                        if ( thisIpout == false ){
+                            alert("請輸入整數");
+                            return;
+                        }else{
+                            pitchScoreObj.myIpOut += parseInt($("#ipout").val()) ;
+                            
+                        }
+                        if ( thisTbf == false ){
+                            alert("請輸入整數");
+                            return;
+                        }else{
+                            pitchScoreObj.myTbf += parseInt($("#tbf").val());
+                            
+                        }
+                        if ( thisPk == false ){
+                            alert("請輸入整數");
+                            return;
+                        }else{
+                            pitchScoreObj.myPk += parseInt($("#pk").val());
+                          
+                        }
+                        if ( thisPbb == false ){
+                            alert("請輸入整數");
+                            return;
+                        }else{
+                            pitchScoreObj.myPbb += parseInt($("#pbb").val());
+                            
+                        }
+                        if ( thisPh == false ){
+                            alert("請輸入整數");
+                            return;
+                        }else{
+                            pitchScoreObj.myPh += parseInt($("#ph").val());
+                        }
+                        if ( thisPer == false ){
+                            alert("請輸入整數");
+                            return;
+                        }else{
+                            pitchScoreObj.myPer += parseInt($("#per").val());
+                            
+                        }
+                        if (thispe == false){
+                            alert("請輸入整數");
+                            return;
+                        }else{
+                            pitchScoreObj.myPe += parseInt($("#pe").val());
+                            $('#pitchTable').append(`
+                            <tr>
+                                <td>${parseInt($("#ipout").val())}</td>
+                                <td>${thisIp}</td>
+                                <td>${parseInt($("#tbf").val())}</td>
+                                <td>${parseInt($("#pk").val())}</td>
+                                <td>${parseInt($("#pbb").val())}</td>
+                                <td>${parseInt($("#ph").val())}</td>
+                                <td>${parseInt($("#per").val())}</td>
+                                <td>${parseInt($("#pe").val())}</td>
+                                <td><button onclick="pitchScoreDelete(this)" class="buttonModel">刪除</button></td>
+                            </tr>
+                            `)
+                        }
+
+                        $(document).ready(function() {
+                            var  myab = batScoreObj.myAb-1;
+                                var  mypitchtbf = pitchScoreObj.myTbf;
+                                var  mypitchk = pitchScoreObj.myPk;
+                                var  mypitchbb = pitchScoreObj.myPbb;
+                                var  mypitchh = pitchScoreObj.myPh;
+                                var  mypitcher = pitchScoreObj.myPer;
+                                var  mypitchpe = pitchScoreObj.myPe;
+                                var  mypitchipout =  pitchScoreObj.myIpOut;
+                                var  mypitchip = ((mypitchipout)%3)*0.1 + parseInt((mypitchipout)/3)
+                                var  mypitchk9 = ((mypitchk/mypitchipout)*27).toFixed(2);
+                                var  mypitchbb9 = ((mypitchbb/mypitchipout)*27).toFixed(2);
+                                var  mypitchba = (mypitchh/mypitchtbf).toFixed(3);
+                                var  mypitchoba = ((mypitchh + mypitchbb)/mypitchtbf).toFixed(3);
+                                var  mypitchera = ((mypitcher/mypitchipout)*27).toFixed(3);
+                                $("#historyIp").html(mypitchip);
+                                $("#historyTbf").html(mypitchtbf);
+                                $("#historyPk").html(mypitchk);
+                                $("#historyPbb").html(mypitchbb);
+                                $("#historyEr").html(mypitcher);
+                                $("#historyEra").html(mypitchera);
+                                $("#historyK9").html(mypitchk9);
+                                $("#historyBb9").html(mypitchbb9);
+                                $("#historyBa").html(mypitchba);
+                                $("#historyOba").html(mypitchoba);
+                                
+                               
+                                });
+                        if (pitchScoreFrequency > 6){
+                    
+                            pitchScoreFrequency = pitchScoreFrequency-1;
+                            $('#pitchTable')
+                            .children()
+                            .eq(1)
+                            .remove()
+                        }
+
+
+                        
+                        })    
+                        
+                    
+               
+                
+            })
+            
+
+            
+            
+       
+               
+        
+                    
+            
+                
+                 
+           
+            
+                function batScoreDelete1b(sender, product){
+                    if (confirm(`是否要刪除打席編號 ${product}？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                        var deleteRbi = parseInt( $(sender)
+                        .parent()
+                        .parent()
+                        .children()
+                        .eq(7)
+                        .text())
+
+                        batScoreFrequency = batScoreFrequency-1;
+                        batScoreObj.myAb = batScoreObj.myAb - 1;
+                        batScoreObj.myRbi = batScoreObj.myRbi - deleteRbi; 
+                        batScoreObj.myOnebase = batScoreObj.myOnebase-1;
+                        $(document).ready(function() {
+                                var  myab = batScoreObj.myAb-1;
+                                var  my1b = batScoreObj.myOnebase;
+                                var  my2b = batScoreObj.myTwobase;
+                                var  my3b = batScoreObj.myThirdbase;
+                                var  my4b = batScoreObj.myHomerun;
+                                var  mybb = batScoreObj.myBb;
+                                var  myk = batScoreObj.myStrikeout;
+                                var  myrbi = batScoreObj.myRbi;
+                                var  myh = my4b + my3b + my2b + my1b;
+                                var  myavg = (myh/(myab-mybb)).toFixed(2);
+                                var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                                var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                                var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                                $("#historyAb").html(myab);
+                                $("#history1B").html(my1b);
+                                $("#history2B").html(my2b);
+                                $("#history3B").html(my3b);
+                                $("#historyHr").html(my4b);
+                                $("#historyBb").html(mybb);
+                                $("#historyK").html(myk);
+                                $("#historyRbi").html(myrbi);
+                                $("#historyH").html(myh);
+                                $("#historyAvg").html(myavg);
+                                $("#historySlg").html(myslg);
+                                $("#historyObp").html(myobp);
+                                $("#historyOps").html(myobs);
+                                
+                            
+                            });
+                        console.log(batScoreObj)
+                        
+                        }
+                    }
+                function batScoreDelete2b(sender, product){
+                    if (confirm(`是否要刪除打席編號 ${product}？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                        var deleteRbi = parseInt( $(sender)
+                        .parent()
+                        .parent()
+                        .children()
+                        .eq(7)
+                        .text())
+
+                        batScoreFrequency = batScoreFrequency-1;
+                        batScoreObj.myAb = batScoreObj.myAb - 1;
+                        batScoreObj.myRbi = batScoreObj.myRbi - deleteRbi; 
+                        batScoreObj.myTwobase = batScoreObj.myTwobase-1;
+                        $(document).ready(function() {
+                                var  myab = batScoreObj.myAb-1;
+                                var  my1b = batScoreObj.myOnebase;
+                                var  my2b = batScoreObj.myTwobase;
+                                var  my3b = batScoreObj.myThirdbase;
+                                var  my4b = batScoreObj.myHomerun;
+                                var  mybb = batScoreObj.myBb;
+                                var  myk = batScoreObj.myStrikeout;
+                                var  myrbi = batScoreObj.myRbi;
+                                var  myh = my4b + my3b + my2b + my1b;
+                                var  myavg = (myh/(myab-mybb)).toFixed(2);
+                                var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                                var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                                var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                                $("#historyAb").html(myab);
+                                $("#history1B").html(my1b);
+                                $("#history2B").html(my2b);
+                                $("#history3B").html(my3b);
+                                $("#historyHr").html(my4b);
+                                $("#historyBb").html(mybb);
+                                $("#historyK").html(myk);
+                                $("#historyRbi").html(myrbi);
+                                $("#historyH").html(myh);
+                                $("#historyAvg").html(myavg);
+                                $("#historySlg").html(myslg);
+                                $("#historyObp").html(myobp);
+                                $("#historyOps").html(myobs);
+                                
+                            
+                            });
+                        console.log(batScoreObj)
+                        
+                        }
+                    }
+                function batScoreDelete3b(sender, product){
+                    if (confirm(`是否要刪除打席編號 ${product}？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                        var deleteRbi = parseInt( $(sender)
+                        .parent()
+                        .parent()
+                        .children()
+                        .eq(7)
+                        .text())
+
+                        batScoreFrequency = batScoreFrequency-1;
+                        batScoreObj.myAb = batScoreObj.myAb - 1;
+                        batScoreObj.myRbi = batScoreObj.myRbi - deleteRbi; 
+                        batScoreObj.myThirdbase = batScoreObj.myThirdbase-1;
+                        $(document).ready(function() {
+                                var  myab = batScoreObj.myAb-1;
+                                var  my1b = batScoreObj.myOnebase;
+                                var  my2b = batScoreObj.myTwobase;
+                                var  my3b = batScoreObj.myThirdbase;
+                                var  my4b = batScoreObj.myHomerun;
+                                var  mybb = batScoreObj.myBb;
+                                var  myk = batScoreObj.myStrikeout;
+                                var  myrbi = batScoreObj.myRbi;
+                                var  myh = my4b + my3b + my2b + my1b;
+                                var  myavg = (myh/(myab-mybb)).toFixed(2);
+                                var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                                var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                                var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                                $("#historyAb").html(myab);
+                                $("#history1B").html(my1b);
+                                $("#history2B").html(my2b);
+                                $("#history3B").html(my3b);
+                                $("#historyHr").html(my4b);
+                                $("#historyBb").html(mybb);
+                                $("#historyK").html(myk);
+                                $("#historyRbi").html(myrbi);
+                                $("#historyH").html(myh);
+                                $("#historyAvg").html(myavg);
+                                $("#historySlg").html(myslg);
+                                $("#historyObp").html(myobp);
+                                $("#historyOps").html(myobs);
+                                
+                            
+                            });
+                        console.log(batScoreObj)
+                        
+                        }
+                    }
+                function batScoreDelete4b(sender, product){
+                    if (confirm(`是否要刪除打席編號 ${product}？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                        var deleteRbi = parseInt( $(sender)
+                        .parent()
+                        .parent()
+                        .children()
+                        .eq(7)
+                        .text())
+
+                        batScoreFrequency = batScoreFrequency-1;
+                        batScoreObj.myAb = batScoreObj.myAb - 1;
+                        batScoreObj.myRbi = batScoreObj.myRbi - deleteRbi; 
+                        batScoreObj.myHomerun = batScoreObj.myHomerun-1;
+                        $(document).ready(function() {
+                                var  myab = batScoreObj.myAb-1;
+                                var  my1b = batScoreObj.myOnebase;
+                                var  my2b = batScoreObj.myTwobase;
+                                var  my3b = batScoreObj.myThirdbase;
+                                var  my4b = batScoreObj.myHomerun;
+                                var  mybb = batScoreObj.myBb;
+                                var  myk = batScoreObj.myStrikeout;
+                                var  myrbi = batScoreObj.myRbi;
+                                var  myh = my4b + my3b + my2b + my1b;
+                                var  myavg = (myh/(myab-mybb)).toFixed(2);
+                                var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                                var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                                var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                                $("#historyAb").html(myab);
+                                $("#history1B").html(my1b);
+                                $("#history2B").html(my2b);
+                                $("#history3B").html(my3b);
+                                $("#historyHr").html(my4b);
+                                $("#historyBb").html(mybb);
+                                $("#historyK").html(myk);
+                                $("#historyRbi").html(myrbi);
+                                $("#historyH").html(myh);
+                                $("#historyAvg").html(myavg);
+                                $("#historySlg").html(myslg);
+                                $("#historyObp").html(myobp);
+                                $("#historyOps").html(myobs);
+                                
+                            
+                            });
+                        console.log(batScoreObj)
+                        
+                        }
+                    }
+                function batScoreDeleteBb(sender, product){
+                    if (confirm(`是否要刪除打席編號 ${product}？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                        var deleteRbi = parseInt( $(sender)
+                        .parent()
+                        .parent()
+                        .children()
+                        .eq(7)
+                        .text())
+
+                        batScoreFrequency = batScoreFrequency-1;
+                        batScoreObj.myAb = batScoreObj.myAb - 1;
+                        batScoreObj.myRbi = batScoreObj.myRbi - deleteRbi; 
+                        batScoreObj.myBb = batScoreObj.myBb-1;
+                        $(document).ready(function() {
+                                var  myab = batScoreObj.myAb-1;
+                                var  my1b = batScoreObj.myOnebase;
+                                var  my2b = batScoreObj.myTwobase;
+                                var  my3b = batScoreObj.myThirdbase;
+                                var  my4b = batScoreObj.myHomerun;
+                                var  mybb = batScoreObj.myBb;
+                                var  myk = batScoreObj.myStrikeout;
+                                var  myrbi = batScoreObj.myRbi;
+                                var  myh = my4b + my3b + my2b + my1b;
+                                var  myavg = (myh/(myab-mybb)).toFixed(2);
+                                var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                                var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                                var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                                $("#historyAb").html(myab);
+                                $("#history1B").html(my1b);
+                                $("#history2B").html(my2b);
+                                $("#history3B").html(my3b);
+                                $("#historyHr").html(my4b);
+                                $("#historyBb").html(mybb);
+                                $("#historyK").html(myk);
+                                $("#historyRbi").html(myrbi);
+                                $("#historyH").html(myh);
+                                $("#historyAvg").html(myavg);
+                                $("#historySlg").html(myslg);
+                                $("#historyObp").html(myobp);
+                                $("#historyOps").html(myobs);
+                                
+                            
+                            });
+                        console.log(batScoreObj)
+                        
+                        }
+                    }
+                function batScoreDeleteSo(sender, product){
+                    if (confirm(`是否要刪除打席編號 ${product}？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                        var deleteRbi = parseInt( $(sender)
+                        .parent()
+                        .parent()
+                        .children()
+                        .eq(7)
+                        .text())
+
+                        batScoreFrequency = batScoreFrequency-1;
+                        batScoreObj.myAb = batScoreObj.myAb - 1;
+                        batScoreObj.myRbi = batScoreObj.myRbi - deleteRbi; 
+                        batScoreObj.myStrikeout = batScoreObj.myStrikeout-1;
+                        $(document).ready(function() {
+                                var  myab = batScoreObj.myAb-1;
+                                var  my1b = batScoreObj.myOnebase;
+                                var  my2b = batScoreObj.myTwobase;
+                                var  my3b = batScoreObj.myThirdbase;
+                                var  my4b = batScoreObj.myHomerun;
+                                var  mybb = batScoreObj.myBb;
+                                var  myk = batScoreObj.myStrikeout;
+                                var  myrbi = batScoreObj.myRbi;
+                                var  myh = my4b + my3b + my2b + my1b;
+                                var  myavg = (myh/(myab-mybb)).toFixed(2);
+                                var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                                var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                                var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                                $("#historyAb").html(myab);
+                                $("#history1B").html(my1b);
+                                $("#history2B").html(my2b);
+                                $("#history3B").html(my3b);
+                                $("#historyHr").html(my4b);
+                                $("#historyBb").html(mybb);
+                                $("#historyK").html(myk);
+                                $("#historyRbi").html(myrbi);
+                                $("#historyH").html(myh);
+                                $("#historyAvg").html(myavg);
+                                $("#historySlg").html(myslg);
+                                $("#historyObp").html(myobp);
+                                $("#historyOps").html(myobs);
+                                
+                            
+                            });
+                        console.log(batScoreObj)
+                        
+                        }
+                    }
+                function batScoreDeleteOut(sender, product){
+                    if (confirm(`是否要刪除打席編號 ${product}？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                        var deleteRbi = parseInt( $(sender)
+                        .parent()
+                        .parent()
+                        .children()
+                        .eq(7)
+                        .text())
+
+                        batScoreFrequency = batScoreFrequency-1;
+                        batScoreObj.myAb = batScoreObj.myAb - 1;
+                        batScoreObj.myRbi = batScoreObj.myRbi - deleteRbi; 
+                        batScoreObj.myOut = batScoreObj.myOut-1;
+                        $(document).ready(function() {
+                                var  myab = batScoreObj.myAb-1;
+                                var  my1b = batScoreObj.myOnebase;
+                                var  my2b = batScoreObj.myTwobase;
+                                var  my3b = batScoreObj.myThirdbase;
+                                var  my4b = batScoreObj.myHomerun;
+                                var  mybb = batScoreObj.myBb;
+                                var  myk = batScoreObj.myStrikeout;
+                                var  myrbi = batScoreObj.myRbi;
+                                var  myh = my4b + my3b + my2b + my1b;
+                                var  myavg = (myh/(myab-mybb)).toFixed(2);
+                                var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                                var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                                var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                                $("#historyAb").html(myab);
+                                $("#history1B").html(my1b);
+                                $("#history2B").html(my2b);
+                                $("#history3B").html(my3b);
+                                $("#historyHr").html(my4b);
+                                $("#historyBb").html(mybb);
+                                $("#historyK").html(myk);
+                                $("#historyRbi").html(myrbi);
+                                $("#historyH").html(myh);
+                                $("#historyAvg").html(myavg);
+                                $("#historySlg").html(myslg);
+                                $("#historyObp").html(myobp);
+                                $("#historyOps").html(myobs);
+                                
+                            
+                            });
+                        console.log(batScoreObj)
+                        
+                        }
+                    }
+                function batScoreDeleteNone(sender, product){
+                    if (confirm(`是否要刪除打席編號 ${product}？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                        var deleteRbi = parseInt( $(sender)
+                        .parent()
+                        .parent()
+                        .children()
+                        .eq(7)
+                        .text())
+
+                        batScoreFrequency = batScoreFrequency-1;
+                        batScoreObj.myAb = batScoreObj.myAb - 1;
+                        batScoreObj.myRbi = batScoreObj.myRbi - deleteRbi; 
+                        $(document).ready(function() {
+                                var  myab = batScoreObj.myAb-1;
+                                var  my1b = batScoreObj.myOnebase;
+                                var  my2b = batScoreObj.myTwobase;
+                                var  my3b = batScoreObj.myThirdbase;
+                                var  my4b = batScoreObj.myHomerun;
+                                var  mybb = batScoreObj.myBb;
+                                var  myk = batScoreObj.myStrikeout;
+                                var  myrbi = batScoreObj.myRbi;
+                                var  myh = my4b + my3b + my2b + my1b;
+                                var  myavg = (myh/(myab-mybb)).toFixed(2);
+                                var  myslg = ((4*my4b + 3*my3b + 2*my2b + my1b)/(myab-mybb)).toFixed(2) ;
+                                var  myobp = ((myh + mybb)/(myab)).toFixed(2);
+                                var  myobs = parseFloat(myslg) + parseFloat(myobp);
+                                $("#historyAb").html(myab);
+                                $("#history1B").html(my1b);
+                                $("#history2B").html(my2b);
+                                $("#history3B").html(my3b);
+                                $("#historyHr").html(my4b);
+                                $("#historyBb").html(mybb);
+                                $("#historyK").html(myk);
+                                $("#historyRbi").html(myrbi);
+                                $("#historyH").html(myh);
+                                $("#historyAvg").html(myavg);
+                                $("#historySlg").html(myslg);
+                                $("#historyObp").html(myobp);
+                                $("#historyOps").html(myobs);
+                                
+                            
+                            });
+                        console.log(batScoreObj)
+                        
+                        }
+                    }
+                function pitchScoreDelete(sender){
+                    if (confirm(`是否要刪除資料？`)) {
+                        $(sender)
+                        .parent()
+                        .parent()
+                        .remove()
+                        
+                            var deletePitchIpOut = parseInt( $(sender)
+                            .parent()
+                            .parent()
+                            .children()
+                            .eq(0)
+                            .text())
+
+                            var deletePitchTbf = parseInt( $(sender)
+                            .parent()
+                            .parent()
+                            .children()
+                            .eq(2)
+                            .text())
+                            
+                                                
+                            var deletePitchK = parseInt( $(sender)
+                            .parent()
+                            .parent()
+                            .children()
+                            .eq(3)
+                            .text())
+                            
+                            var deletePitchBb = parseInt( $(sender)
+                            .parent()
+                            .parent()
+                            .children()
+                            .eq(4)
+                            .text())
+                            
+                            var deletePitchH = parseInt( $(sender)
+                            .parent()
+                            .parent()
+                            .children()
+                            .eq(5)
+                            .text())
+                            
+                            var deletePitchEr = parseInt( $(sender)
+                            .parent()
+                            .parent()
+                            .children()
+                            .eq(6)
+                            .text())
+                            
+                            var deletePitchPe = parseInt( $(sender)
+                            .parent()
+                            .parent()
+                            .children()
+                            .eq(7)
+                            .text())
+                        pitchScoreFrequency = pitchScoreFrequency-1;
+                        pitchScoreObj.myIpOut = pitchScoreObj.myIpOut - deletePitchIpOut
+                        pitchScoreObj.myTbf = pitchScoreObj.myTbf - deletePitchTbf
+                        pitchScoreObj.myPk = pitchScoreObj.myPk - deletePitchK
+                        pitchScoreObj.myBb = pitchScoreObj.myBb - deletePitchBb
+                        pitchScoreObj.myPh = pitchScoreObj.myPh - deletePitchH
+                        pitchScoreObj.myPer = pitchScoreObj.myPer - deletePitchEr
+                        pitchScoreObj.myPe = pitchScoreObj.myPe - deletePitchPe
+
+                        
+                        $(document).ready(function() {
+                            var  myab = batScoreObj.myAb-1;
+                                var  mypitchtbf = pitchScoreObj.myTbf;
+                                var  mypitchk = pitchScoreObj.myPk;
+                                var  mypitchbb = pitchScoreObj.myPbb;
+                                var  mypitchh = pitchScoreObj.myPh;
+                                var  mypitcher = pitchScoreObj.myPer;
+                                var  mypitchpe = pitchScoreObj.myPe;
+                                var  mypitchipout =  pitchScoreObj.myIpOut;
+                                var  mypitchip = ((mypitchipout)%3)*0.1 + parseInt((mypitchipout)/3)
+                                var  mypitchk9 = ((mypitchk/mypitchipout)*27).toFixed(2);
+                                var  mypitchbb9 = ((mypitchbb/mypitchipout)*27).toFixed(2);
+                                var  mypitchba = (mypitchh/mypitchtbf).toFixed(3);
+                                var  mypitchoba = ((mypitchh + mypitchbb)/mypitchtbf).toFixed(3);
+                                var  mypitchera = ((mypitcher/mypitchipout)*27).toFixed(3);
+                                $("#historyIp").html(mypitchip);
+                                $("#historyTbf").html(mypitchtbf);
+                                $("#historyPk").html(mypitchk);
+                                $("#historyPbb").html(mypitchbb);
+                                $("#historyEr").html(mypitcher);
+                                $("#historyEra").html(mypitchera);
+                                $("#historyK9").html(mypitchk9);
+                                $("#historyBb9").html(mypitchbb9);
+                                $("#historyBa").html(mypitchba);
+                                $("#historyOba").html(mypitchoba);
+                                
+                               
+                                });
+                        
+                        
+                        }
+                }        
+                    
+                    
+                    
+                
+            
+          
+            
+           
+                
+            
+            
+            
+            
+                
+            
+            // calculateAndDisplayStats(batScoreObj);
+           
+
+                            
+                        
+
+        </script>
+
+        
+    </body>
+
+</html>

@@ -1,0 +1,24 @@
+.navBar{
+    list-style-type: none ;
+    text-align: center;
+    background-color: black;
+}
+
+.navBar li{
+    display:inline-block ;
+    height: 20px;
+    width: auto;
+    padding: 0px 20px 30px ;
+}
+
+.navBar li:hover{
+    background-color: #656565;
+}
+
+.navBar li a {
+    color: white;
+    text-align: center; 
+    vertical-align: 50% ;
+    text-decoration:none;
+
+}

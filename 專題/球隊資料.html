@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="baseball,棒壘球,Box Score,攻守資料表">
+        <meta name="author" content="samuel772014">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="../css/專題.css"> 
+        <title>中區球隊資料平台</title>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <style>
+            
+            table{
+                border-collapse: collapse ;
+            }
+
+            table,th,td{
+                border: 5px solid black;
+            }
+            h1{
+                text-align: center;
+            }
+            p{
+                display: inline-block;
+                font-weight:bolder;
+                font-size: x-large;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div>
+            <h1 style="font-size: 50px; font-family: 儷黑 Pro; ">中區球隊資料平台</h1>
+        </div>
+        <div >   
+            <div class="demo" >
+                <a href="./球隊資料.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">球隊資料</p></div></a>
+                <a href="./約賽平台model.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">約賽賽程</p></div></a>
+                <a href="./個人紀錄.html"><div id="graydiv" class="hover"><p style="margin: 0px; font-size: 200%;  font-weight:bold;">個人紀錄</p></div></a>
+                <fieldset class="idPassword">
+                    <legend style="font-size: large; font-weight: bold;">會員登入區</legend>
+                    <label for="userId">帳號</label>
+                    <input type="text" id="userId" size="5">
+                    <br>
+                    <label for="userPassword">密碼</label>
+                    <input type="password" id="userPassword" size="10"> 
+                    <button onclick="userLogin()">登入</button> 
+                </fieldset>
+            </div >
+            <div class="rightSide">
+                <div style="position: absolute; left:0;">
+                    <div  class="teamInfor">
+                        <h2>灣流騎士棒球隊</h2>
+                        <img src="../img/隊徽.jpg" >
+                        <div  class="teamMsg">
+                            <p>所屬聯盟:中都聯盟</p><br>
+                            <p>領隊姓名: ?????</p><br>
+                            <p>電話:0987654321</p>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <div  class="teamInfor">
+                        <h2>追夢者棒球隊</h2>
+                        <img src="../img/追夢者.jpg" >
+                        <div  class="teamMsg">
+                            <p>所屬聯盟:中都聯盟</p><br>
+                            <p>領隊姓名: ?????</p><br>
+                            <p>電話:0987654321</p>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <div  class="teamInfor">
+                        <h2>勝勵阿努比斯球隊</h2>
+                        <img src="../img/勝勵.jpg" >
+                        <div  class="teamMsg">
+                            <p>所屬聯盟:大肚溪聯盟</p><br>
+                            <p>領隊姓名: ?????</p><br>
+                            <p>電話:0987654321</p>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div  class="teamInfor">
+                        <h2>樂成球隊</h2>
+                        <img src="../img/樂成.jpg" >
+                        <div  class="teamMsg">
+                            <p>所屬聯盟:大肚溪聯盟</p><br>
+                            <p>領隊姓名: ?????</p><br>
+                            <p>電話:0987654321</p>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <script>
+                function userLogin(){
+                    var id = document.getElementById("userId").value;
+                    var password = document.getElementById("userPassword").value;
+                    // console.log(id);
+                    if (id == "samuel772014" ,password = "1234"){
+                        alert("登入成功");
+                        location.href="http://127.0.0.1:5500/%E5%B0%88%E9%A1%8C/%E5%80%8B%E4%BA%BA%E7%B4%80%E9%8C%84.html"
+                    }else{
+                        alert("帳號或密碼錯誤")
+                    }
+                }
+            </script>        
+      
+
+        
+    </body>
+
+</html>
